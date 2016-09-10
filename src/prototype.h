@@ -1,0 +1,3 @@
+struct Object {
+    void *(*prop);
+}
