@@ -23,3 +23,4 @@ struct Object {
 void *Object_constructor(t_pool *pool, void *_self, va_list *args);
 void *Object_destructor(t_pool *pool, void *_self);
 void *Object_clone(t_pool *pool, void *_self);
+void *Object_add_property(t_pool *pool, void *_self, char *key, void *val, size_t size);

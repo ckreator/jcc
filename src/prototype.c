@@ -3,7 +3,7 @@
 #include "prototype.h"
 
 
-/* Prototype Chain:
+/* Prototype Property:
  * Object Contains hash table -> _prototype
  * the entry in the hash table is a linked list
  * The first entry in the list with matching identifier is used (shadowing)

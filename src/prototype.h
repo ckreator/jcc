@@ -19,17 +19,24 @@
 // 1. Easier to remove and add properties
 // 2. The Program uses "shadowing" of properties
 
-typedef struct Chain {
-    struct Chain *nxt;
+// kvp - Key-Value Pair
+typedef struct kvp {
+    char key[ID_MAX];
     void *val;
-} Chain;
+} kvp;
+
+typedef struct Property {
+    struct Property *nxt;
+    kvp *entry;
+} Property;
 
 typedef struct Prototype {
     size_t size;
     void * (*constructor) (t_pool *pool, void *self, va_list *args);
     void * (*destructor) (t_pool *pool, void *self);
     void * (*clone) (t_pool *pool, void *self);
-    Chain *_proto;
+    void * (*add_property) (t_pool *pool, void *self, char *key, void *val, size_t size);
+    Property *_proto;
 } Prototype;
 
 #endif /* PROTOTYPE_H */
