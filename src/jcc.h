@@ -30,6 +30,14 @@ void *jcc_clone(t_pool *pool, void *self);
  * Description: adds a new property to an object
  * Example. For type 'String', invoke this way:
  *
- * jcc_add_property(some_pool, str, "length", &length_var, sizeof(int));
+ * jcc_set_property(some_pool, str, "length", &length_var, sizeof(int));
  *********************************************************/
-void *jcc_add_property(t_pool *pool, void *self, char *key, void *val, size_t size);
+void *jcc_set_property(t_pool *pool, void *self, char *key, void *val, size_t size);
+
+/*********************************************************
+ * Description: get a property of an object or NULL if no such property
+ * Example. For type 'String', invoke this way:
+ *
+ * jcc_get_property(some_pool, str, "length");
+ *********************************************************/
+void *jcc_get_property(t_pool *pool, void *self, char *key);

@@ -35,7 +35,8 @@ typedef struct Prototype {
     void * (*constructor) (t_pool *pool, void *self, va_list *args);
     void * (*destructor) (t_pool *pool, void *self);
     void * (*clone) (t_pool *pool, void *self);
-    void * (*add_property) (t_pool *pool, void *self, char *key, void *val, size_t size);
+    void * (*set_property) (t_pool *pool, void *self, char *key, void *val, size_t size);
+    void * (*get_property) (t_pool *pool, void *_self, char *key);
     Property *_proto;
 } Prototype;
 

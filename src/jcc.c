@@ -55,12 +55,22 @@ void *jcc_clone(t_pool *pool, void *self) {
     return NULL;
 }
 
-void *jcc_add_property(t_pool *pool, void *self, char *key, void *val, size_t size) {
+void *jcc_set_property(t_pool *pool, void *self, char *key, void *val, size_t size) {
     // TODO: change this when hash table will be used
     const Prototype **cp = self;
 
-    if (self && *cp && (*cp)->clone) {
-        self = (*cp)->add_property(pool, self, key, val, size);
+    if (self && *cp && (*cp)->set_property) {
+        self = (*cp)->set_property(pool, self, key, val, size);
+        return self;
+    }
+    return NULL;
+}
+
+void *jcc_get_property(t_pool *pool, void *self, char *key) {
+    const Prototype **cp = self;
+
+    if (self && *cp && (*cp)->get_property) {
+        self = (*cp)->get_property(pool, self, key);
         return self;
     }
     return NULL;
